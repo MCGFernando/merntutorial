@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react'
+import { useWorkoutContext } from '../hokks/useWorkoutContext'
 const WorkoutForm = () => {
+    const {dispatch} = useWorkoutContext()
     const [title, setTitle] = useState('')
     const [load, setLoad] = useState('')
     const [reps, setReps] = useState('')
@@ -26,6 +28,7 @@ const WorkoutForm = () => {
             setLoad('')
             setReps('')
             console.log('Workout adde', json)
+            dispatch({type:'CREATE_WORKOUTS', payload: json})
         }
     }
     return (
